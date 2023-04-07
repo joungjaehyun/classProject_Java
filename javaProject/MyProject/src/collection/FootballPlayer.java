@@ -1,7 +1,7 @@
 package collection;
 
 // 축구선수의 정보를 저장하는 클래스 : 축구선수 데이터저장 -> 인스턴스 생성
-public class FootballPlayer {
+public class FootballPlayer implements Comparable<FootballPlayer>{
 
 	private String name;
 	private int number;
@@ -52,6 +52,44 @@ public class FootballPlayer {
 		this.age = age;
 	}
 
+	
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return this.age;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+
+		boolean result = false;
+
+		if (obj != null && obj instanceof FootballPlayer) {
+			
+			FootballPlayer player = (FootballPlayer) obj;
+			result = this.team.equals(player.getTeam())
+					 && this.name.equals(player.getName())
+					 &&this.age==player.getAge();
+		}
+		
+		return result;
+	}
+	
+	
+	@Override
+	public int compareTo(FootballPlayer o) {
+		
+		int compare = this.team.compareTo(o.getTeam());
+		if (compare ==0) {
+			compare = this.name.compareTo(o.getName());
+			if (compare == 0) {
+				compare = this.number - o.getNumber();
+				// compare = Integer.compare(this.number, o.getNumber());
+			}
+		}
+			
+		return compare;
+	}
 	@Override
 	public String toString() {
 		return "FootballPlayer [name=" + name + ", number=" + number + ", team=" + team + ", age=" + age + "]";
@@ -60,6 +98,8 @@ public class FootballPlayer {
 	public void showInfo() {
 		System.out.printf("[%s] %s (%d, %d)\n", this.team, this.name, this.number, this.age);
 	}
+
+	
 
 	
 }
