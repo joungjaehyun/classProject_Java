@@ -19,7 +19,6 @@ public class SerializableTest2 {
 			Person p = (Person)inputStream.readObject();
 			String newStr = (String) inputStream.readObject();
 	
-			
 			p.tell();
 			System.out.println(newStr);
 			
@@ -37,7 +36,6 @@ public class SerializableTest2 {
 				if (inputStream!=null) {
 					inputStream.close();
 				}
-				
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
