@@ -12,7 +12,7 @@ public class ConnectionTest {
 		
 		try {
 			// 1. 드라이버 로드 : Class.forName("클래스의 풀네임");
-			//Class.forName("oracle.jdbc.driver.OracleDriver");
+			//Class.forName("oracle.jdbc.driver.OracleDriver"); 1.7 버전까지
 			// 2. Connection 객체를 생성 : 연결 정보
 			// jdbcUrl
 			// Oracle 연결

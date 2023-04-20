@@ -30,7 +30,7 @@ public class SelectTest {
 			Statement stmt = conn.createStatement();
 			
 			// sql
-			String sql ="select * from dept order by deptno";
+			String sql ="select deptno, dname, loc from dept order by deptno";
 			
 			
 			// 4. select의 결과 데이터는 ResultSet 객체로 받는다.
