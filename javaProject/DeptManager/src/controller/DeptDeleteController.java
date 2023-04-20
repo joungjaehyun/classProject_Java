@@ -24,7 +24,7 @@ public class DeptDeleteController {
 
 		System.out.println("검색을 시작합니다.");
 
-		System.out.println("검색할 부서번호를  입력하세요>>");
+		System.out.println("삭제할 부서번호를  입력하세요>>");
 
 		return Integer.parseInt(DeptManagerMain.sc.nextLine());
 
