@@ -178,7 +178,27 @@ public class DeptDao {
 	}
 	
 	// 5. 부서 정보 삭제 (Connection conn, int num)
-
+	public int deleteByDeptno (Connection conn, int deptno) {
+		PreparedStatement pstmt =null;
+		String sql = "delete from dept where deptno = ?";
+		int result =0;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, deptno);
+			result = pstmt.executeUpdate();
+			if (result ==1) {
+				System.out.println("선택된 행이 삭제되었습니다.");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	
+	
+	
 	public static void main(String[] args) throws SQLException {
 
 		DeptDao dao = new DeptDao();
