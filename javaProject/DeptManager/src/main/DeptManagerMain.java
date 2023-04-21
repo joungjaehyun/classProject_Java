@@ -7,7 +7,7 @@ import controller.DeptInsertController;
 import controller.DeptListController;
 import controller.DeptSearchController;
 import controller.DeptUpdateController;
-import service.DeptInsertService;
+
 
 public class DeptManagerMain {
 

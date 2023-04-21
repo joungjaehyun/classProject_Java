@@ -159,7 +159,7 @@ public class DeptDao {
 			pstmt.setInt(3, deptno);
 			result = pstmt.executeUpdate();
 			if (result > 0) {
-				System.out.println("부서번호 " + deptno+"의 부서명이" +dname+"로 수정되고 " + "부서지역 " +loc+" 수정되었습니다.");
+				System.out.println("부서번호 " + deptno+"의 부서명이" +dname+"로 수정되고 " + "부서지역 " +loc+"로 수정되었습니다.");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -187,7 +187,7 @@ public class DeptDao {
 			pstmt.setInt(1, deptno);
 			result = pstmt.executeUpdate();
 			if (result ==1) {
-				System.out.println("선택된 행이 삭제되었습니다.");
+				System.out.println(deptno +" 행이 삭제되었습니다.");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
