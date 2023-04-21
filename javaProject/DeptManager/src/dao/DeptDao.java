@@ -112,68 +112,77 @@ public class DeptDao {
 		return result;
 	}
 
-	// 3. 부서 정보 입력 (Connection conn, int num)
-	public int addDept(Connection conn, int deptno, String dname, String loc) {
-
+	// 3. 부서 정보 입력 : deptno, dname, loc
+	public int insertDept(Connection conn, Dept dept ) {
+		
 		PreparedStatement pstmt = null;
-		String sql = "insert into dept values (?,?,?)";
 		int result =0;
+		
+		// Insert Sql
+		String sql = "insert into dept values (?, ?, ?)";
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, deptno);
-			pstmt.setString(2, dname);
-			pstmt.setString(3, loc);
-			 result = pstmt.executeUpdate();
-			System.out.println(result);
-			if (result >0) {
-				System.out.println("부서번호 " + deptno + "부서명 " +dname + "부서지역" +loc +"가 입력되었습니다.");
-				
+			pstmt.setInt(1, dept.getDeptno());
+			pstmt.setString(2, dept.getDname());
+			pstmt.setString(3, dept.getLoc());
+			
+			result = pstmt.executeUpdate();
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if(pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
+		}
+		
+		
+		
+		return result;
+	}
+	
+	
+	// 4. 부서 정보 수정 : deptno, dname, loc
+	public int updateDeptByDeptno(Connection conn, Dept dept ) {
+		
+		PreparedStatement pstmt =null;
+		int result = 0;
+		
+		// Update sql
+		String sql = "update dept set dname =?,loc =? where deptno =?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dept.getDname());
+			pstmt.setString(2, dept.getLoc());
+			pstmt.setInt(3, dept.getDeptno());
+			
+			result = pstmt.executeUpdate();
 		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			try {
-				if (pstmt != null) {
+			if (pstmt!=null) {
+				try {
 					pstmt.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
 			}
+			
 		}
-		return result;
-
-	}
-
-	// 4. 부서 정보 수정 (Connection conn, int num)
-	public int updateByDeptno(Connection conn, int deptno, String dname, String loc) {
-		PreparedStatement pstmt = null;
-		String sql ="update dept set dname=? ,loc=? where deptno=?";
-		int result =0;
-		try {
-			pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, dname);
-			pstmt.setString(2,loc);
-			pstmt.setInt(3, deptno);
-			result = pstmt.executeUpdate();
-			if (result > 0) {
-				System.out.println("부서번호 " + deptno+"의 부서명이" +dname+"로 수정되고 " + "부서지역 " +loc+"로 수정되었습니다.");
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			try {
-				if (pstmt != null) {
-					pstmt.close();
-				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
+		
 		return result;
 	}
 	
@@ -212,10 +221,14 @@ public class DeptDao {
 			System.out.println(dept);
 		}
 
-		Dept dept = dao.selectByDeptno(conn, 10);
+		Dept dept = dao.selectByDeptno(conn, 50);
 		System.out.println("결과 : " + dept);
 		
-		dao.addDept(conn, 50,"DEVELOPMENT","SEOUL");
+		//int insertResult = dao.insertDept(conn, new Dept(50,"TEST","SEOUL"));
+		//System.out.println("저장 결과 : " +insertResult);
+		Dept d = new Dept (50,"TTT","QQQ");
+		int updateResult = dao.updateDeptByDeptno(conn, d);
+		System.out.println(updateResult);
 	}
 
 }

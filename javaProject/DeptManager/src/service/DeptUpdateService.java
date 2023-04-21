@@ -16,19 +16,28 @@ public class DeptUpdateService {
 		this.dao = new DeptDao();
 	}
 	
-	public void updateDept(Dept dept) {
+	public int updateDept(Dept newdept) {
 
 		Connection conn = null;
-		
+		int result =0;
 
 		try {
 			conn = ConnectionProvider.getConnection();
-			dao.updateByDeptno(conn,dept.getDeptno(),dept.getDname(),dept.getLoc());
+			result =dao.updateDeptByDeptno(conn,newdept);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
-
+		return result;
 	
 	}
 }

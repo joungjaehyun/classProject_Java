@@ -34,6 +34,7 @@ public class DeptSearchController {
 		System.out.println("부서번호 : " + dept.getDeptno());
 		System.out.println("부서이름 : " + dept.getDname());
 		System.out.println("부서위치 : " + dept.getLoc());
+		System.out.println("----------------");
 	}
 	
 

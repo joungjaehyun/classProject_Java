@@ -16,14 +16,14 @@ public class DeptInsertService {
 		this.dao = new DeptDao();
 	}
 	
-	public void addDept(Dept dept) {
+	public int insertDept(Dept dept) throws SQLException {
 		
-		Connection conn = null;
-		 try {
-			 conn= ConnectionProvider.getConnection();
-			dao.addDept(conn, dept.getDeptno(),dept.getDname(),dept.getLoc());
-		 }catch(SQLException e){
-			 e.printStackTrace();
-		 }
+		// RequestDept (만약 임의의 번호를 받지않고 시퀀스 처리시) => dname,loc
+		// 데이터 가공
+		// Transaction
+		
+		
+		
+		return dao.insertDept(ConnectionProvider.getConnection(), dept); //controller 측에서 예외처리 해줘야됨
 	}
 }

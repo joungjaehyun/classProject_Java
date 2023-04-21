@@ -39,7 +39,7 @@ public class DeptManagerMain {
 				new DeptSearchController().searchDept();
 				break;
 			case 3:
-				new DeptInsertController().insert();
+				new DeptInsertController().insertDept();
 				break;
 			case 4:
 				new DeptUpdateController().updateDept();
