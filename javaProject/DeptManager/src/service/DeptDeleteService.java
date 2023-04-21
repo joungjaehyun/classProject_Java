@@ -11,24 +11,43 @@ public class DeptDeleteService {
 
 	DeptDao dao;
 	
-	public DeptDeleteService() {
+	private DeptDeleteService() {
 
-		this.dao = new DeptDao();
+		this.dao = DeptDao.getInstance();
 	}
 	
-	public void deleteDept(int deptno) {
+	private static DeptDeleteService service = new DeptDeleteService();
+	public static DeptDeleteService getInstance() {
+		if (service ==null) {
+			service = new DeptDeleteService();
+		}
+		return service;
+	}
+	
+	
+	public int deleteDept(int deptno) {
 
 		Connection conn = null;
-		
+		int result =0;
 
 		try {
 			conn = ConnectionProvider.getConnection();
-			dao.deleteByDeptno(conn,deptno);
+			result =dao.deleteByDeptno(conn,deptno);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
-
+		
+		return result;
 	
 	}
 }

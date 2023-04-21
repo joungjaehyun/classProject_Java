@@ -2,19 +2,28 @@ package controller;
 
 import domain.Dept;
 import main.DeptManagerMain;
+import service.DeptInsertService;
 import service.DeptSearchService;
 
-public class DeptSearchController {
+public class DeptSearchController implements Controller{
 
 	// Service
 	DeptSearchService searchService;
 	
-	public DeptSearchController() {
+	private DeptSearchController() {
 		
-		this.searchService = new DeptSearchService();
+		this.searchService =  DeptSearchService.getInstance();
+	}
+	private static DeptSearchController controller = new DeptSearchController();
+	
+	public static DeptSearchController getInstance() {
+		if (controller == null) {
+			controller= new DeptSearchController();
+		}
+		return controller;
 	}
 	
-	public void searchDept() {
+	public void process() {
 
 		// view : 검색할 부서번호를 사용자로부터 받는 화면
 		int deptno = getDeptNo();

@@ -6,25 +6,29 @@ import java.sql.SQLException;
 
 import domain.Dept;
 import main.DeptManagerMain;
-public class DeptInsertController {
+public class DeptInsertController implements Controller {
 
 	DeptInsertService insertService;
 	
-	public DeptInsertController( ) {
-		this.insertService = new DeptInsertService();
+	private DeptInsertController( ) {
+		this.insertService = DeptInsertService.getInstance();
+	}
+	
+	private static DeptInsertController controller = new DeptInsertController();
+	
+	public static DeptInsertController getInstance() {
+		if (controller == null) {
+			controller = new DeptInsertController();
+		}
+		return controller;
 	}
 
-	public void insertDept() {
+	public void process() {
 		// 1. 사용자 입력 처리 -> Dept 타입의 객체를 반환
 		Dept dept =inputDept();
 		// 2. Dept 객체를 Service로 전달 => 결과 반환 (1 or 0)
-		int result = 0;
-		try {
-			result = insertService.insertDept(dept);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		int result = insertService.insertDept(dept);
+		
 		// 3. 결과 출력
 		printData(result);
 	}

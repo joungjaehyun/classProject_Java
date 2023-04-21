@@ -9,12 +9,25 @@ import util.ConnectionProvider;
 
 public class DeptSearchService {
 
+
+	
+	
+	
 	DeptDao dao;
 
-	public DeptSearchService() {
+	private DeptSearchService() {
 
-		this.dao = new DeptDao();
+		this.dao = DeptDao.getInstance();
 	}
+	private static DeptSearchService service = new DeptSearchService();
+	
+	public static DeptSearchService getInstance() {
+		if (service ==null) {
+			service = new DeptSearchService();
+		}
+		return service;
+	}
+	
 
 	// 검색 번호를 받고 Dept 정보를 저장하고 있는 객체를 반환
 	public Dept searchDept(int deptno) {
@@ -28,6 +41,15 @@ public class DeptSearchService {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if (conn !=null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
 
 		return dept;

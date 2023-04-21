@@ -11,9 +11,18 @@ public class DeptUpdateService {
 
 	DeptDao dao;
 
-	public DeptUpdateService() {
+	private DeptUpdateService() {
 
-		this.dao = new DeptDao();
+		this.dao = DeptDao.getInstance();
+	}
+	private static DeptUpdateService service = new DeptUpdateService();
+	
+	public static DeptUpdateService getInstance() {
+		if (service ==null) {
+			service = new DeptUpdateService();
+		}
+		
+		return service;
 	}
 	
 	public int updateDept(Dept newdept) {

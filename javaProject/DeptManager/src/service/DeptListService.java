@@ -8,13 +8,22 @@ import java.util.List;
 
 import dao.DeptDao;
 import domain.Dept;
+import util.ConnectionProvider;
 
 public class DeptListService {
 
 	DeptDao dao;
 
-	public DeptListService(DeptDao dao) {
-		this.dao = dao;
+	private DeptListService() {
+		this.dao = DeptDao.getInstance();
+	}
+	private static DeptListService service = new DeptListService();
+	
+	public static DeptListService getInstance() {
+		if (service ==null) {
+			service = new DeptListService();
+		}
+		return service;
 	}
 
 	public List<Dept> getDeptList() {
@@ -23,8 +32,8 @@ public class DeptListService {
 		List<Dept> list = null;
 		try {
 			// Connection 객체 구하기
-			String dbUrl = "jdbc:oracle:thin:@localhost:1521:xe";
-			conn = DriverManager.getConnection(dbUrl, "hr", "tiger");
+			
+			conn = ConnectionProvider.getConnection();
 
 			// 트랜젝션 시작
 			conn.setAutoCommit(false);
@@ -52,12 +61,21 @@ public class DeptListService {
 				}
 			}
 			e.printStackTrace();
+		}finally {
+			if (conn!= null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
 		return list;
 	}
 	
 	public static void main(String[] args) {
-		DeptListService listService = new DeptListService(new DeptDao());
+		DeptListService listService = new DeptListService();
 		
 		List<Dept> list = listService.getDeptList();
 		
