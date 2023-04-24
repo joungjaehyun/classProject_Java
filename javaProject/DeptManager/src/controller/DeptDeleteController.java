@@ -42,7 +42,7 @@ public class DeptDeleteController implements Controller {
 		if(result > 0) {
 			System.out.println("삭제되었습니다.");
 		}else {
-			System.out.println("삭제할 대상 부서가 존재하지 않습니다.");
+			System.out.println("삭제할 대상 부서가 존재하지  	않습니다.");
 		}
 	}
 	

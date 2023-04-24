@@ -227,7 +227,7 @@ public class DeptDao {
 	
 	
 	
-	
+	// 테스트를위한 메인
 	public static void main(String[] args) throws SQLException {
 
 		DeptDao dao = new DeptDao();
