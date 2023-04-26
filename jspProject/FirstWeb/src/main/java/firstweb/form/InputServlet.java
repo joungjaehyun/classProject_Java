@@ -1,4 +1,4 @@
-package firstWeb.form;
+package firstweb.form;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/input")
+@WebServlet("/form/input")
 public class InputServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request,
