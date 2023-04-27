@@ -1,4 +1,4 @@
-package sign;
+package firstweb.sign;
 
 import java.io.IOException;
 import java.io.PrintWriter;
