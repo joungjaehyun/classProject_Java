@@ -51,8 +51,8 @@ public class TodoModifyController extends HttpServlet {
 				duedate, 
 				complete !=null ? complete.equals("on") ?"done" :"not": "not");
 		System.out.println(newTodo);
-		// 결과 받고
-		int result =1 ;
+		// 결과에대한 처리 1또는 0이나옴
+		int result =1;
 		// redirect 처리
 		response.sendRedirect("list");
 	}
