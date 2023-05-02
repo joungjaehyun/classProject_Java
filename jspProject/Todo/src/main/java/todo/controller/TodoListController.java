@@ -21,7 +21,7 @@ public class TodoListController extends HttpServlet {
 	TodoListService listService;
 	
 	public TodoListController() {
-		this.listService = new TodoListService();
+		this.listService = TodoListService.getInstance();
 	}
 	// 화면에 리스트 출력 : get 방식의 요청
 	// 브라우저의 url창 에 입력해서 요청 => get
