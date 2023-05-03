@@ -8,7 +8,7 @@
 <title>TodoList</title>
 </head>
 <body>
-	<h1>Todo LIST</h1>
+	<h1>Todo LIST(${loginInfo})</h1>
 	<ul>
 	<c:forEach items="${todoList}" var="todo">
 
@@ -19,5 +19,12 @@
 
 
 <a href="${pageContext.request.contextPath}/todo/register ">Todo Regist</a>
+
+<c:if test="${loginInfo eq null}">
+<a href="${pageContext.request.contextPath }/login"> 로그인 </a>
+</c:if>
+<c:if test="${loginInfo ne null}">
+<a href="${pageContext.request.contextPath }/logout"> 로그아웃 </a>
+</c:if>
 </body>
 </html>
