@@ -1,0 +1,17 @@
+홈페이지 
+
+jsp 를 통한 서버 실행시 시간 
+
+회원가입 로그인
+
+로그인시 => todo list 영역으로 들어감
+
+로그아웃시 다시 홈페이지 영역으로 들어감
+
+더미데이터 역시 미구현 Create table만 구현함.
+
+미구현 목록
+
+로그인시 Register delete modify read (Todo에대한 CRUD 미구현)
+
+
