@@ -8,10 +8,10 @@
 </head>
 <body>
 
-<h1>Todo 상세보기</h1>
+<h1>Todo 상세보기 (${loginInfo.uid}[${loginInfo.uname}])</h1>
 
 	번호 : <input type="text" name="no" value="${todo.tno}" readonly> <br>
-	할일 : <input type="text" name="todo" value="${todo.todo }" readonly> <br>
+	할일 : <input type="text" name="todo" value="	${todo.todo }" readonly> <br>
 	날짜 : <input type="date" name="duedate" value="${todo.duedate }" readonly><br>
 	완료 : <input type="checkbox" name="complete" ${todo.finished ? 'checked' : ''}><br>
 	<!-- checkbox value => "on" -->

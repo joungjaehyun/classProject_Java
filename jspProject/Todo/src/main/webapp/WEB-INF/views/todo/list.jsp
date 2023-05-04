@@ -8,7 +8,7 @@
 <title>TodoList</title>
 </head>
 <body>
-	<h1>Todo LIST(${loginInfo})</h1>
+	<h1>Todo LIST(${loginInfo.uid}[${loginInfo.uname}])</h1>
 	<ul>
 	<c:forEach items="${todoList}" var="todo">
 

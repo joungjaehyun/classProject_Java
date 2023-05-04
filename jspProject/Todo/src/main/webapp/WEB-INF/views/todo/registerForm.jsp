@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Todo 등록</title>
+<title>Todo 등록)</title>
 </head>
 <body>
 
-<h1>Todo 등록</h1>
+<h1>Todo 등록(${loginInfo.uid}[${loginInfo.uname}]</h1>
 
 <form method="post">
 
