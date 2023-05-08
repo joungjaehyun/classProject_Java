@@ -10,7 +10,7 @@
 	<h1>${loginData.lastName}${loginData.firstName}님의 수정작업</h1>
 	<form>
 		작업자 : <input type="text" name="personID"
-			value="${loginData.personID }" readonly><br> 
+			value="${cookie.rePersonID.value }" readonly><br> 
 			번호 : <input
 			type="text" name="todoNum" value="${todo.todoNum}" readonly>
 		<br> 할일 : <input type="text" name="title" value="${todo.title }"

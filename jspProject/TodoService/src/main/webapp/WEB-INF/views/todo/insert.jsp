@@ -12,7 +12,7 @@
 
 	할일 : <input type="text" name="title"> <br>
 	날짜 : <input type="date" name="duedate"><br>
-	유저명 : <input type="text" name ="personID"><br>
+	유저명 : <input type="text" name ="personID" value="${ cookie.rePersonID.value}" readonly><br>
 	<input type="reset" value="reset"><input type="submit" value="Add"> 
 </form>
 
